@@ -1,0 +1,22 @@
+/*
+ * alt_main.h
+ *
+ *  Created on: Feb 7, 2023
+ *      Author: josep
+ */
+
+#ifndef INC_ALT_MAIN_H_
+#define INC_ALT_MAIN_H_
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+int alt_main();
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INC_ALT_MAIN_H_ */

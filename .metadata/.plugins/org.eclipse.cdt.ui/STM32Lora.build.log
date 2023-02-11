@@ -1,0 +1,29 @@
+23:21:00 **** Incremental Build of configuration Debug for project STM32Lora ****
+make -j8 all 
+arm-none-eabi-g++ "../RA01/ra01.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"RA01/ra01.d" -MT"RA01/ra01.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "RA01/ra01.o"
+../RA01/ra01.cpp: In member function 'int LoRaClass::endPacket(bool)':
+../RA01/ra01.cpp:189:59: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+  189 |     while (readRegister(REG_IRQ_FLAGS) & IRQ_TX_DONE_MASK == 0) {
+      |                                                           ^
+../RA01/ra01.cpp: In member function 'void LoRaClass::writeRegister(uint8_t, uint8_t)':
+../RA01/ra01.cpp:750:13: warning: unused variable 'rxData' [-Wunused-variable]
+  750 |     uint8_t rxData[5] = {0,0,0,0,0};
+      |             ^~~~~~
+../RA01/ra01.cpp: In member function 'void LoRaClass::writeCommand(uint8_t, uint8_t*, uint8_t)':
+../RA01/ra01.cpp:768:13: warning: unused variable 'rxData' [-Wunused-variable]
+  768 |     uint8_t rxData[5] = {0,0,0,0,0};
+      |             ^~~~~~
+arm-none-eabi-g++ -o "STM32Lora.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\josep\Projects\STM32Lora\STM32Lora\STM32G431KBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32Lora.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: STM32Lora.elf
+ 
+arm-none-eabi-size   STM32Lora.elf 
+arm-none-eabi-objdump -h -S  STM32Lora.elf  > "STM32Lora.list"
+   text	   data	    bss	    dec	    hex	filename
+  24396	    124	   1912	  26432	   6740	STM32Lora.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32Lora.list
+ 
+
+23:21:01 Build Finished. 0 errors, 3 warnings. (took 606ms)
+
