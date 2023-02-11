@@ -85,6 +85,8 @@ LoRaClass::LoRaClass() :
 	_LORA_CS_Pin(),
 	_LORA_BUSY_GPIO_Port(),
 	_LORA_BUSY_Pin(),
+	_LORA_DIO0_GPIO_Port(),
+	_LORA_DIO0_Pin(),
 	_frequency(0),
 	_packetIndex(0),
 	_implicitHeaderMode(0),
@@ -467,22 +469,9 @@ void LoRaClass::setFrequency(long frequency)
   writeRegister(REG_FRF_LSB, (uint8_t)(frf >> 0));
 }
 
-void LoRaClass::setIRQInterrupts()
+void LoRaClass::setDioMappings()
 {
-	uint8_t values[8];
-	values[0] = 0b00; // Set IRQ Mask (enable TxDone & RxDone)
-	values[1] = 0b10; // Set IRQ Mask (enable TxDone & RxDone)
-
-	values[2] = 0b00; // DIO1Mask (Interrupt on TX Done or RX Done)
-	values[3] = 0b10; // DIO1Mask (Interrupt on TX Done or RX Done)
-
-	values[4] = 0b00; // DIO2Mask (Interrupt on RX Done)
-	values[5] = 0b00; // DIO2Mask (Interrupt on RX Done)
-
-	values[6] = 0b00; // DIO3Mask (No Interrupt)
-	values[7] = 0b00; // DIO3Mask (No Interrupt)
-
-	writeCommand(SET_DIO_IRQ_PARAMS, values, 8);
+	writeRegister(REG_DIO_MAPPING_1, 0x00);
 }
 
 int LoRaClass::getSpreadingFactor()
@@ -673,6 +662,13 @@ uint8_t LoRaClass::random()
 //  _reset = reset;
 //  _dio0 = dio0;
 //}
+
+void LoRaClass::setDIO(GPIO_TypeDef *LORA_DIO0_GPIO_Port, uint16_t LORA_DIO0_Pin)
+{
+	_LORA_DIO0_GPIO_Port = LORA_DIO0_GPIO_Port;
+	_LORA_DIO0_Pin = LORA_DIO0_Pin;
+}
+
 
 void LoRaClass::setSPI(SPI_HandleTypeDef *spi, GPIO_TypeDef *LORA_CS_GPIO_Port, uint16_t LORA_CS_Pin, GPIO_TypeDef *LORA_BUSY_GPIO_Port, uint16_t LORA_BUSY_Pin)
 {

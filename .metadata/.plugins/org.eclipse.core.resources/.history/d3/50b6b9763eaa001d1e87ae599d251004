@@ -1,0 +1,8 @@
+/*
+ * ra01.cpp
+ *
+ *  Created on: Feb 11, 2023
+ *      Author: josep
+ */
+
+Ra01Class::Ra01Class() :

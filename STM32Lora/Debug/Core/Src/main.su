@@ -1,5 +1,5 @@
 ../Core/Src/main.c:61:9:uint8_t checkLoraRead()	16	static
 ../Core/Src/main.c:81:9:uint8_t loraTransmit(uint8_t*, uint8_t)	32	static
 ../Core/Src/main.c:103:5:int main()	88	static
-../Core/Src/main.c:194:6:void SystemClock_Config()	88	static
-../Core/Src/main.c:238:6:void Error_Handler()	4	static,ignoring_inline_asm
+../Core/Src/main.c:200:6:void SystemClock_Config()	88	static
+../Core/Src/main.c:244:6:void Error_Handler()	4	static,ignoring_inline_asm

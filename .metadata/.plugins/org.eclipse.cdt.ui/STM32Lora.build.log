@@ -1,29 +1,54 @@
-23:21:00 **** Incremental Build of configuration Debug for project STM32Lora ****
+16:44:32 **** Incremental Build of configuration Debug for project STM32Lora ****
 make -j8 all 
 arm-none-eabi-g++ "../RA01/ra01.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"RA01/ra01.d" -MT"RA01/ra01.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "RA01/ra01.o"
+arm-none-eabi-gcc "../Core/Src/gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gpio.d" -MT"Core/Src/gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gpio.o"
+arm-none-eabi-g++ "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/spi.d" -MT"Core/Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/spi.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_hal_msp.d" -MT"Core/Src/stm32g4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
+cc1plus.exe: warning: command-line option '-std=gnu11' is valid for C/ObjC but not for C++
 ../RA01/ra01.cpp: In member function 'int LoRaClass::endPacket(bool)':
-../RA01/ra01.cpp:189:59: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
-  189 |     while (readRegister(REG_IRQ_FLAGS) & IRQ_TX_DONE_MASK == 0) {
+../RA01/ra01.cpp:191:59: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+  191 |     while (readRegister(REG_IRQ_FLAGS) & IRQ_TX_DONE_MASK == 0) {
       |                                                           ^
 ../RA01/ra01.cpp: In member function 'void LoRaClass::writeRegister(uint8_t, uint8_t)':
-../RA01/ra01.cpp:750:13: warning: unused variable 'rxData' [-Wunused-variable]
-  750 |     uint8_t rxData[5] = {0,0,0,0,0};
+../RA01/ra01.cpp:746:13: warning: unused variable 'rxData' [-Wunused-variable]
+  746 |     uint8_t rxData[5] = {0,0,0,0,0};
       |             ^~~~~~
 ../RA01/ra01.cpp: In member function 'void LoRaClass::writeCommand(uint8_t, uint8_t*, uint8_t)':
-../RA01/ra01.cpp:768:13: warning: unused variable 'rxData' [-Wunused-variable]
-  768 |     uint8_t rxData[5] = {0,0,0,0,0};
+../RA01/ra01.cpp:764:13: warning: unused variable 'rxData' [-Wunused-variable]
+  764 |     uint8_t rxData[5] = {0,0,0,0,0};
       |             ^~~~~~
+../Core/Src/main.c: In function 'uint8_t checkLoraRead()':
+../Core/Src/main.c:63:7: warning: variable 'recieved' set but not used [-Wunused-but-set-variable]
+   63 |  bool recieved = false;
+      |       ^~~~~~~~
+../Core/Src/main.c: In function 'int main()':
+../Core/Src/main.c:179:11: warning: unused variable 'loraTransmission' [-Wunused-variable]
+  179 |   uint8_t loraTransmission[32];
+      |           ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:180:11: warning: unused variable 'loraTransmissionLen' [-Wunused-variable]
+  180 |   uint8_t loraTransmissionLen = sprintf((char*)spiBuf, "Data:%02X ", (tx_count/15));
+      |           ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:142:11: warning: unused variable 'val' [-Wunused-variable]
+  142 |   uint8_t val;
+      |           ^~~
+../Core/Src/main.c: In function 'uint8_t loraTransmit(uint8_t*, uint8_t)':
+../Core/Src/main.c:87:9: warning: 'void* __builtin_memcpy(void*, const void*, unsigned int)' writing 35 bytes into a region of size 32 overflows the destination [-Wstringop-overflow=]
+   87 |   strcpy((char*)uartBuf, "LoRa Transmit Already In Process\r\n");
+      |   ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 arm-none-eabi-g++ -o "STM32Lora.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\josep\Projects\STM32Lora\STM32Lora\STM32G431KBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32Lora.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 Finished building target: STM32Lora.elf
  
 arm-none-eabi-size   STM32Lora.elf 
 arm-none-eabi-objdump -h -S  STM32Lora.elf  > "STM32Lora.list"
    text	   data	    bss	    dec	    hex	filename
-  24396	    124	   1912	  26432	   6740	STM32Lora.elf
+  24676	    124	   1920	  26720	   6860	STM32Lora.elf
 Finished building: default.size.stdout
  
 Finished building: STM32Lora.list
  
 
-23:21:01 Build Finished. 0 errors, 3 warnings. (took 606ms)
+16:44:33 Build Finished. 0 errors, 8 warnings. (took 1s.23ms)
 

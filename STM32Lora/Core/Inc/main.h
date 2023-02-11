@@ -57,8 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define RA01_DIO1_Pin GPIO_PIN_0
-#define RA01_DIO1_GPIO_Port GPIOA
+#define RA01_DIO0_Pin GPIO_PIN_0
+#define RA01_DIO0_GPIO_Port GPIOA
 #define RA01_BUSY_Pin GPIO_PIN_1
 #define RA01_BUSY_GPIO_Port GPIOA
 #define USART2_TX_Pin GPIO_PIN_2
@@ -67,6 +67,8 @@ void Error_Handler(void);
 #define USART2_RX_GPIO_Port GPIOA
 #define RA01_CS_Pin GPIO_PIN_4
 #define RA01_CS_GPIO_Port GPIOA
+#define RA01_RST_Pin GPIO_PIN_11
+#define RA01_RST_GPIO_Port GPIOA
 #define T_SWDIO_Pin GPIO_PIN_13
 #define T_SWDIO_GPIO_Port GPIOA
 #define T_SWCLK_Pin GPIO_PIN_14

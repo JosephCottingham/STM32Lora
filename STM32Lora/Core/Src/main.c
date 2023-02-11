@@ -24,9 +24,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <ra01.h>
 #include <string.h>
 #include <stdio.h>
-#include <ra01.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -130,7 +130,14 @@ int main(void)
   strcpy((char*)uartBuf, "LoRa\r\n");
   HAL_UART_Transmit(&huart2, uartBuf, strlen((char*)uartBuf), HAL_MAX_DELAY);
 
+  // Reset RA01
+  HAL_GPIO_WritePin(RA01_RST_GPIO_Port, RA01_RST_Pin, GPIO_PIN_RESET);
+  HAL_Delay(2000);
+  HAL_GPIO_WritePin(RA01_RST_GPIO_Port, RA01_RST_Pin, GPIO_PIN_SET);
+
+
   LoRa.setSPI(&hspi1, RA01_CS_GPIO_Port, RA01_CS_Pin, RA01_BUSY_GPIO_Port, RA01_BUSY_Pin);
+//  LoRa.setDIO(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin);
   HAL_Delay(1000);
   uint8_t spiBuf[32];
   uint8_t val;
@@ -147,7 +154,7 @@ int main(void)
   LoRa.setSignalBandwidth(125E3);
   LoRa.setSpreadingFactor(125);
   LoRa.setCodingRate4(5);
-  LoRa.setIRQInterrupts();
+//  LoRa.setDioMappings();
 
   uint16_t tx_count = 0;
   /* USER CODE END 2 */
@@ -158,7 +165,7 @@ int main(void)
   while (1)
   {
 	HAL_Delay(5000);
-//	if (HAL_GPIO_ReadPin(RA01_DIO1_GPIO_Port, RA01_DIO1_Pin) == 1) {
+//	if (HAL_GPIO_ReadPin(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin) == 1) {
 		checkLoraRead();
 //	}
 

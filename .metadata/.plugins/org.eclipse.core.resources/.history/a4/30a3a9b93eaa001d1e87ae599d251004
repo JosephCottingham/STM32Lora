@@ -1,0 +1,41 @@
+/*
+ * ra01.h
+ *
+ *  Created on: Feb 11, 2023
+ *      Author: josep
+ */
+
+#ifndef RA01_H_
+#define RA01_H_
+
+#include "stm32g4xx_hal.h"
+#include "main.h"
+
+class LoRaClass {
+public:
+  LoRaClass();
+
+  int begin(long frequency);
+  void end();
+
+//  void setPins(int ss = LORA_DEFAULT_SS_PIN, int reset = LORA_DEFAULT_RESET_PIN, int dio0 = LORA_DEFAULT_DIO0_PIN);
+  void setSPI(SPI_HandleTypeDef *spi, GPIO_TypeDef *LORA_CS_GPIO_Port, uint16_t LORA_CS_Pin, GPIO_TypeDef *LORA_BUSY_GPIO_Port, uint16_t LORA_BUSY_Pin);
+
+private:
+
+private:
+  SPI_HandleTypeDef* _spi;
+  GPIO_TypeDef *_LORA_CS_GPIO_Port;
+  uint16_t _LORA_CS_Pin;
+  GPIO_TypeDef *_LORA_BUSY_GPIO_Port;
+  uint16_t _LORA_BUSY_Pin;
+  long _frequency;
+  int _packetIndex;
+  int _implicitHeaderMode;
+  void (*_onReceive)(int);
+  void (*_onTxDone)();
+};
+
+extern LoRaClass LoRa;
+
+#endif /* RA01_H_ */

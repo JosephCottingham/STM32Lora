@@ -1,0 +1,21 @@
+/*
+ * ra01.cpp
+ *
+ *  Created on: Feb 11, 2023
+ *      Author: josep
+ */
+
+LoRaClass::LoRaClass() :
+	_spi(),
+	_LORA_CS_GPIO_Port(),
+	_LORA_CS_Pin(),
+	_LORA_BUSY_GPIO_Port(),
+	_LORA_BUSY_Pin(),
+	_frequency(0),
+	_packetIndex(0),
+	_implicitHeaderMode(0),
+	_onReceive(NULL),
+	_onTxDone(NULL)
+{
+
+}
