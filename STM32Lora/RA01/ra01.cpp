@@ -116,6 +116,9 @@ int LoRaClass::begin(long frequency)
   // set frequency
   setFrequency(frequency);
 
+  // Enable AutoRestartRxMode
+//  writeRegister(REG_SYNC_CONFIG, 0b0101011);
+
   // set base addresses
   writeRegister(REG_FIFO_TX_BASE_ADDR, 0);
   writeRegister(REG_FIFO_RX_BASE_ADDR, 0);
@@ -144,14 +147,18 @@ void LoRaClass::end()
 //  _spi->end();
 }
 
-void LoRaClass::setRxMode()
+void LoRaClass::setRxMode(bool continuous)
 {
-	uint8_t values[3];
-	values[0] = 0xFF;
-	values[1] = 0xFF;
-	values[2] = 0xFF;
+	if (continuous) {
+		writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_CONTINUOUS);
+	} else {
+		writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_SINGLE);
+	}
+}
 
-	writeCommand(SET_RX, values, 3);
+void LoRaClass::setTxMode()
+{
+	writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_TX);
 }
 
 
@@ -170,7 +177,7 @@ int LoRaClass::beginPacket(int implicitHeader)
     explicitHeaderMode();
   }
 
-  // reset FIFO address and paload length
+  // reset FIFO address and payload length
   writeRegister(REG_FIFO_ADDR_PTR, 0);
   writeRegister(REG_PAYLOAD_LENGTH, 0);
 
@@ -179,24 +186,24 @@ int LoRaClass::beginPacket(int implicitHeader)
 
 int LoRaClass::endPacket(bool async)
 {
+	// put in TX mode
+	setTxMode();
 
-  if ((async) && (_onTxDone))
-      writeRegister(REG_DIO_MAPPING_1, 0x40); // DIO0 => TXDONE
+	// wait for TX done
+	while (HAL_GPIO_ReadPin(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin) == 1) {
+		HAL_Delay(100);
+	//      yield();
+	}
 
-  // put in TX mode
-  writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_TX);
-
-  if (!async) {
-    // wait for TX done
-    while (readRegister(REG_IRQ_FLAGS) & IRQ_TX_DONE_MASK == 0) {
-    	HAL_Delay(1000);
-//      yield();
-    }
     // clear IRQ's
     writeRegister(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
-  }
 
-  return 1;
+    // Set to Standby
+    HAL_Delay(1000);
+    sleep();
+//    writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_SINGLE);
+
+    return 1;
 }
 
 bool LoRaClass::isTransmitting()
@@ -216,7 +223,7 @@ bool LoRaClass::isTransmitting()
 int LoRaClass::parsePacket(int size)
 {
   int packetLength = 0;
-  HAL_Delay(1000);
+//  HAL_Delay(1000);
   int irqFlags = readRegister(REG_IRQ_FLAGS);
 
   if (size > 0) {
@@ -245,16 +252,17 @@ int LoRaClass::parsePacket(int size)
     writeRegister(REG_FIFO_ADDR_PTR, readRegister(REG_FIFO_RX_CURRENT_ADDR));
 
     // put in standby mode
-    idle();
-  } else if (readRegister(REG_OP_MODE) != (MODE_LONG_RANGE_MODE | MODE_RX_SINGLE)) {
-    // not currently in RX mode
-
-    // reset FIFO address
-    writeRegister(REG_FIFO_ADDR_PTR, 0);
-
-    // put in single RX mode
-    writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_SINGLE);
+//    idle();
   }
+//  else if (readRegister(REG_OP_MODE) != (MODE_LONG_RANGE_MODE | MODE_RX_SINGLE)) {
+//    // not currently in RX mode
+//
+//    // reset FIFO address
+//    writeRegister(REG_FIFO_ADDR_PTR, 0);
+//
+//    // put in single RX mode
+//    writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_SINGLE);
+//  }
 
   return packetLength;
 }
@@ -356,60 +364,6 @@ void LoRaClass::flush()
 {
 }
 
-#ifndef ARDUINO_SAMD_MKRWAN1300
-//void LoRaClass::onReceive(void(*callback)(int))
-//{
-//  _onReceive = callback;
-//
-//  if (callback) {
-//    pinMode(_dio0, INPUT);
-//#ifdef SPI_HAS_NOTUSINGINTERRUPT
-//    SPI.usingInterrupt(digitalPinToInterrupt(_dio0));
-//#endif
-//    attachInterrupt(digitalPinToInterrupt(_dio0), LoRaClass::onDio0Rise, RISING);
-//  } else {
-//    detachInterrupt(digitalPinToInterrupt(_dio0));
-//#ifdef SPI_HAS_NOTUSINGINTERRUPT
-//    SPI.notUsingInterrupt(digitalPinToInterrupt(_dio0));
-//#endif
-//  }
-//}
-
-//void LoRaClass::onTxDone(void(*callback)())
-//{
-//  _onTxDone = callback;
-//
-//  if (callback) {
-//    pinMode(_dio0, INPUT);
-//#ifdef SPI_HAS_NOTUSINGINTERRUPT
-//    SPI.usingInterrupt(digitalPinToInterrupt(_dio0));
-//#endif
-//    attachInterrupt(digitalPinToInterrupt(_dio0), LoRaClass::onDio0Rise, RISING);
-//  } else {
-//    detachInterrupt(digitalPinToInterrupt(_dio0));
-//#ifdef SPI_HAS_NOTUSINGINTERRUPT
-//    SPI.notUsingInterrupt(digitalPinToInterrupt(_dio0));
-//#endif
-//  }
-//}
-
-//void LoRaClass::receive(int size)
-//{
-//
-//  writeRegister(REG_DIO_MAPPING_1, 0x00); // DIO0 => RXDONE
-//
-//  if (size > 0) {
-//    implicitHeaderMode();
-//
-//    writeRegister(REG_PAYLOAD_LENGTH, size & 0xff);
-//  } else {
-//    explicitHeaderMode();
-//  }
-//
-//  writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_RX_CONTINUOUS);
-//}
-#endif
-
 void LoRaClass::idle()
 {
   writeRegister(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_STDBY);
@@ -471,7 +425,8 @@ void LoRaClass::setFrequency(long frequency)
 
 void LoRaClass::setDioMappings()
 {
-	writeRegister(REG_DIO_MAPPING_1, 0x00);
+//	0b10010000
+	writeRegister(REG_DIO_MAPPING_1, 0b00000000);
 }
 
 int LoRaClass::getSpreadingFactor()

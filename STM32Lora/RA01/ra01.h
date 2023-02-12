@@ -32,10 +32,12 @@
 #define REG_RSSI_VALUE           0x1b
 #define REG_MODEM_CONFIG_1       0x1d
 #define REG_MODEM_CONFIG_2       0x1e
+#define REG_SYMB_TIMEOUT_LSB	 0x1f
 #define REG_PREAMBLE_MSB         0x20
 #define REG_PREAMBLE_LSB         0x21
 #define REG_PAYLOAD_LENGTH       0x22
 #define REG_MODEM_CONFIG_3       0x26
+#define REG_SYNC_CONFIG          0x27
 #define REG_FREQ_ERROR_MSB       0x28
 #define REG_FREQ_ERROR_MID       0x29
 #define REG_FREQ_ERROR_LSB       0x2a
@@ -110,7 +112,8 @@ public:
 
   void setBufferBaseAddress();
 
-  void setRxMode();
+  void setRxMode(bool continuous=false);
+  void setTxMode();
 
   void setTxPower(int level, int outputPin = PA_OUTPUT_PA_BOOST_PIN);
   void setFrequency(long frequency);

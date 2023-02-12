@@ -60,6 +60,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 uint8_t checkLoraRead() {
 	uint8_t packetSize = LoRa.parsePacket();
+
 	bool recieved = false;
 	if (packetSize)
 	{
@@ -109,7 +110,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+   HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -131,13 +132,16 @@ int main(void)
   HAL_UART_Transmit(&huart2, uartBuf, strlen((char*)uartBuf), HAL_MAX_DELAY);
 
   // Reset RA01
+  HAL_GPIO_WritePin(RA01_RST_GPIO_Port, RA01_RST_Pin, GPIO_PIN_SET);
+  HAL_Delay(2500);
   HAL_GPIO_WritePin(RA01_RST_GPIO_Port, RA01_RST_Pin, GPIO_PIN_RESET);
-  HAL_Delay(2000);
+  HAL_Delay(2500);
   HAL_GPIO_WritePin(RA01_RST_GPIO_Port, RA01_RST_Pin, GPIO_PIN_SET);
 
 
   LoRa.setSPI(&hspi1, RA01_CS_GPIO_Port, RA01_CS_Pin, RA01_BUSY_GPIO_Port, RA01_BUSY_Pin);
-//  LoRa.setDIO(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin);
+  LoRa.setDIO(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin);
+
   HAL_Delay(1000);
   uint8_t spiBuf[32];
   uint8_t val;
@@ -154,20 +158,23 @@ int main(void)
   LoRa.setSignalBandwidth(125E3);
   LoRa.setSpreadingFactor(125);
   LoRa.setCodingRate4(5);
-//  LoRa.setDioMappings();
+  LoRa.setDioMappings();
 
   uint16_t tx_count = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  LoRa.setRxMode();
+  LoRa.idle();
+//  LoRa.setPreambleLength(0xffff);
+  LoRa.setRxMode(true);
+//  checkLoraRead();
   while (1)
   {
-	HAL_Delay(5000);
-//	if (HAL_GPIO_ReadPin(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin) == 1) {
+	HAL_Delay(100);
+	if (HAL_GPIO_ReadPin(RA01_DIO0_GPIO_Port, RA01_DIO0_Pin) == 1) {
 		checkLoraRead();
-//	}
+	}
 
 
 //	HAL_GPIO_WritePin(TOGGLE_GPIO_Port, TOGGLE_Pin, GPIO_PIN_SET);
@@ -176,11 +183,13 @@ int main(void)
 //	HAL_GPIO_WritePin(TOGGLE_GPIO_Port, TOGGLE_Pin, GPIO_PIN_RESET);
 //	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
-	if (tx_count % 150 == 0) {
+	if (tx_count % 10 == 0) {
 		uint8_t loraTransmission[32];
-		uint8_t loraTransmissionLen = sprintf((char*)spiBuf, "Data:%02X ", (tx_count/15));
-//		HAL_UART_Transmit(&huart2, spiBuf, loraTransmissionLen, HAL_MAX_DELAY);
-
+		uint8_t loraTransmissionLen = sprintf((char*)loraTransmission, "Data:%02X ", (tx_count/15));
+//		HAL_UART_Transmit(&huart2, loraTransmission, loraTransmissionLen, HAL_MAX_DELAY);
+//		LoRa.idle();
+//		LoRa.sleep();
+//		LoRa.setSignalBandwidth(125E3);
 //		loraTransmit(loraTransmission, loraTransmissionLen);
 
 	}

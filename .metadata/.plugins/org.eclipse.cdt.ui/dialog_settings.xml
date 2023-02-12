@@ -10,5 +10,13 @@
 		<item key="askReindex.detail" value="0"/>
 	</section>
 	<section name="CResourceRenameRefactoringInputPage">
+		<item key="updateReferences" value="true"/>
+	</section>
+	<section name="PDOMSearchPage">
+		<item key="caseSensitive" value="false"/>
+		<item key="searchFlags" value="227191"/>
+		<list key="previousPatterns">
+			<item value="RA01_BUSY_GPIO_Port"/>
+		</list>
 	</section>
 </section>

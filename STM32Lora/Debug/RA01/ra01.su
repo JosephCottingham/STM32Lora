@@ -1,50 +1,51 @@
 ../RA01/ra01.cpp:82:1:LoRaClass::LoRaClass()	16	static
 ../RA01/ra01.cpp:99:5:int LoRaClass::begin(long int)	24	static
-../RA01/ra01.cpp:138:6:void LoRaClass::end()	16	static
-../RA01/ra01.cpp:147:6:void LoRaClass::setRxMode()	24	static
-../RA01/ra01.cpp:158:5:int LoRaClass::beginPacket(int)	16	static
-../RA01/ra01.cpp:180:5:int LoRaClass::endPacket(bool)	16	static
-../RA01/ra01.cpp:202:6:bool LoRaClass::isTransmitting()	16	static
-../RA01/ra01.cpp:216:5:int LoRaClass::parsePacket(int)	24	static
-../RA01/ra01.cpp:262:5:int LoRaClass::packetRssi()	16	static
-../RA01/ra01.cpp:267:7:float LoRaClass::packetSnr()	16	static
-../RA01/ra01.cpp:272:6:long int LoRaClass::packetFrequencyError()	40	static
-../RA01/ra01.cpp:291:5:int LoRaClass::rssi()	16	static
-../RA01/ra01.cpp:296:8:virtual size_t LoRaClass::write(uint8_t)	16	static
-../RA01/ra01.cpp:301:8:virtual size_t LoRaClass::write(const uint8_t*, size_t)	32	static
-../RA01/ra01.cpp:321:5:virtual int LoRaClass::available()	16	static
-../RA01/ra01.cpp:326:5:virtual int LoRaClass::read()	16	static
-../RA01/ra01.cpp:337:5:virtual int LoRaClass::peek()	24	static
-../RA01/ra01.cpp:355:6:virtual void LoRaClass::flush()	16	static
-../RA01/ra01.cpp:413:6:void LoRaClass::idle()	16	static
-../RA01/ra01.cpp:418:6:void LoRaClass::sleep()	16	static
-../RA01/ra01.cpp:423:6:void LoRaClass::setTxPower(int, int)	24	static
-../RA01/ra01.cpp:461:6:void LoRaClass::setFrequency(long int)	32	static
-../RA01/ra01.cpp:472:6:void LoRaClass::setDioMappings()	16	static
-../RA01/ra01.cpp:477:5:int LoRaClass::getSpreadingFactor()	16	static
-../RA01/ra01.cpp:482:6:void LoRaClass::setSpreadingFactor(int)	16	static
-../RA01/ra01.cpp:502:6:long int LoRaClass::getSignalBandwidth()	24	static
-../RA01/ra01.cpp:522:6:void LoRaClass::setSignalBandwidth(long int)	24	static
-../RA01/ra01.cpp:552:6:void LoRaClass::setLdoFlag()	40	static
-../RA01/ra01.cpp:569:6:void LoRaClass::setCodingRate4(int)	24	static
-../RA01/ra01.cpp:582:6:void LoRaClass::setPreambleLength(long int)	16	static
-../RA01/ra01.cpp:588:6:void LoRaClass::setSyncWord(int)	16	static
-../RA01/ra01.cpp:593:6:void LoRaClass::enableCrc()	16	static
-../RA01/ra01.cpp:598:6:void LoRaClass::disableCrc()	16	static
-../RA01/ra01.cpp:603:6:void LoRaClass::enableInvertIQ()	16	static
-../RA01/ra01.cpp:609:6:void LoRaClass::disableInvertIQ()	16	static
-../RA01/ra01.cpp:615:6:void LoRaClass::setOCP(uint8_t)	24	static
-../RA01/ra01.cpp:628:6:void LoRaClass::setGain(uint8_t)	16	static
-../RA01/ra01.cpp:654:9:uint8_t LoRaClass::random()	16	static
-../RA01/ra01.cpp:666:6:void LoRaClass::setDIO(GPIO_TypeDef*, uint16_t)	24	static
-../RA01/ra01.cpp:673:6:void LoRaClass::setSPI(SPI_HandleTypeDef*, GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t)	24	static
-../RA01/ra01.cpp:683:6:void LoRaClass::explicitHeaderMode()	16	static
-../RA01/ra01.cpp:690:6:void LoRaClass::implicitHeaderMode()	16	static
-../RA01/ra01.cpp:697:6:void LoRaClass::handleDio0Rise()	24	static
-../RA01/ra01.cpp:728:17:static void LoRaClass::onDio0Rise()	8	static
-../RA01/ra01.cpp:735:6:void LoRaClass::checkBusyLine()	24	static
-../RA01/ra01.cpp:742:6:void LoRaClass::writeRegister(uint8_t, uint8_t)	32	static
-../RA01/ra01.cpp:756:6:void LoRaClass::writeCommand(uint8_t, uint8_t*, uint8_t)	72	dynamic
-../RA01/ra01.cpp:774:9:uint8_t LoRaClass::readRegister(uint8_t)	32	static
-../RA01/ra01.cpp:789:1:void __static_initialization_and_destruction_0(int, int)	16	static
-../RA01/ra01.cpp:789:1:cpp)	8	static
+../RA01/ra01.cpp:141:6:void LoRaClass::end()	16	static
+../RA01/ra01.cpp:150:6:void LoRaClass::setRxMode(bool)	16	static
+../RA01/ra01.cpp:159:6:void LoRaClass::setTxMode()	16	static
+../RA01/ra01.cpp:165:5:int LoRaClass::beginPacket(int)	16	static
+../RA01/ra01.cpp:187:5:int LoRaClass::endPacket(bool)	16	static
+../RA01/ra01.cpp:209:6:bool LoRaClass::isTransmitting()	16	static
+../RA01/ra01.cpp:223:5:int LoRaClass::parsePacket(int)	24	static
+../RA01/ra01.cpp:270:5:int LoRaClass::packetRssi()	16	static
+../RA01/ra01.cpp:275:7:float LoRaClass::packetSnr()	16	static
+../RA01/ra01.cpp:280:6:long int LoRaClass::packetFrequencyError()	40	static
+../RA01/ra01.cpp:299:5:int LoRaClass::rssi()	16	static
+../RA01/ra01.cpp:304:8:virtual size_t LoRaClass::write(uint8_t)	16	static
+../RA01/ra01.cpp:309:8:virtual size_t LoRaClass::write(const uint8_t*, size_t)	32	static
+../RA01/ra01.cpp:329:5:virtual int LoRaClass::available()	16	static
+../RA01/ra01.cpp:334:5:virtual int LoRaClass::read()	16	static
+../RA01/ra01.cpp:345:5:virtual int LoRaClass::peek()	24	static
+../RA01/ra01.cpp:363:6:virtual void LoRaClass::flush()	16	static
+../RA01/ra01.cpp:367:6:void LoRaClass::idle()	16	static
+../RA01/ra01.cpp:372:6:void LoRaClass::sleep()	16	static
+../RA01/ra01.cpp:377:6:void LoRaClass::setTxPower(int, int)	24	static
+../RA01/ra01.cpp:415:6:void LoRaClass::setFrequency(long int)	32	static
+../RA01/ra01.cpp:426:6:void LoRaClass::setDioMappings()	16	static
+../RA01/ra01.cpp:432:5:int LoRaClass::getSpreadingFactor()	16	static
+../RA01/ra01.cpp:437:6:void LoRaClass::setSpreadingFactor(int)	16	static
+../RA01/ra01.cpp:457:6:long int LoRaClass::getSignalBandwidth()	24	static
+../RA01/ra01.cpp:477:6:void LoRaClass::setSignalBandwidth(long int)	24	static
+../RA01/ra01.cpp:507:6:void LoRaClass::setLdoFlag()	40	static
+../RA01/ra01.cpp:524:6:void LoRaClass::setCodingRate4(int)	24	static
+../RA01/ra01.cpp:537:6:void LoRaClass::setPreambleLength(long int)	16	static
+../RA01/ra01.cpp:543:6:void LoRaClass::setSyncWord(int)	16	static
+../RA01/ra01.cpp:548:6:void LoRaClass::enableCrc()	16	static
+../RA01/ra01.cpp:553:6:void LoRaClass::disableCrc()	16	static
+../RA01/ra01.cpp:558:6:void LoRaClass::enableInvertIQ()	16	static
+../RA01/ra01.cpp:564:6:void LoRaClass::disableInvertIQ()	16	static
+../RA01/ra01.cpp:570:6:void LoRaClass::setOCP(uint8_t)	24	static
+../RA01/ra01.cpp:583:6:void LoRaClass::setGain(uint8_t)	16	static
+../RA01/ra01.cpp:609:9:uint8_t LoRaClass::random()	16	static
+../RA01/ra01.cpp:621:6:void LoRaClass::setDIO(GPIO_TypeDef*, uint16_t)	24	static
+../RA01/ra01.cpp:628:6:void LoRaClass::setSPI(SPI_HandleTypeDef*, GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t)	24	static
+../RA01/ra01.cpp:638:6:void LoRaClass::explicitHeaderMode()	16	static
+../RA01/ra01.cpp:645:6:void LoRaClass::implicitHeaderMode()	16	static
+../RA01/ra01.cpp:652:6:void LoRaClass::handleDio0Rise()	24	static
+../RA01/ra01.cpp:683:17:static void LoRaClass::onDio0Rise()	8	static
+../RA01/ra01.cpp:690:6:void LoRaClass::checkBusyLine()	24	static
+../RA01/ra01.cpp:697:6:void LoRaClass::writeRegister(uint8_t, uint8_t)	32	static
+../RA01/ra01.cpp:711:6:void LoRaClass::writeCommand(uint8_t, uint8_t*, uint8_t)	72	dynamic
+../RA01/ra01.cpp:729:9:uint8_t LoRaClass::readRegister(uint8_t)	32	static
+../RA01/ra01.cpp:744:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../RA01/ra01.cpp:744:1:cpp)	8	static
