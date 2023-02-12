@@ -890,3 +890,63 @@ Finished building: default.size.stdout
  
 Finished building: STM32Lora.list
  
+01:12:44 **** Incremental Build of configuration Debug for project STM32Lora ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+cc1plus.exe: warning: command-line option '-std=gnu11' is valid for C/ObjC but not for C++
+../Core/Src/main.c: In function 'uint8_t checkLoraRead()':
+../Core/Src/main.c:64:7: warning: variable 'recieved' set but not used [-Wunused-but-set-variable]
+   64 |  bool recieved = false;
+      |       ^~~~~~~~
+../Core/Src/main.c: In function 'int main()':
+../Core/Src/main.c:146:11: warning: unused variable 'spiBuf' [-Wunused-variable]
+  146 |   uint8_t spiBuf[32];
+      |           ^~~~~~
+../Core/Src/main.c:147:11: warning: unused variable 'val' [-Wunused-variable]
+  147 |   uint8_t val;
+      |           ^~~
+../Core/Src/main.c: In function 'uint8_t loraTransmit(uint8_t*, uint8_t)':
+../Core/Src/main.c:88:9: warning: 'void* __builtin_memcpy(void*, const void*, unsigned int)' writing 35 bytes into a region of size 32 overflows the destination [-Wstringop-overflow=]
+   88 |   strcpy((char*)uartBuf, "LoRa Transmit Already In Process\r\n");
+      |   ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-g++ -o "STM32Lora.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\josep\Projects\STM32Lora\STM32Lora\STM32G431KBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32Lora.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: STM32Lora.elf
+ 
+arm-none-eabi-size   STM32Lora.elf 
+arm-none-eabi-objdump -h -S  STM32Lora.elf  > "STM32Lora.list"
+   text	   data	    bss	    dec	    hex	filename
+  25304	    124	   1920	  27348	   6ad4	STM32Lora.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32Lora.list
+ 
+01:13:05 **** Incremental Build of configuration Debug for project STM32Lora ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+cc1plus.exe: warning: command-line option '-std=gnu11' is valid for C/ObjC but not for C++
+../Core/Src/main.c: In function 'uint8_t checkLoraRead()':
+../Core/Src/main.c:64:7: warning: variable 'recieved' set but not used [-Wunused-but-set-variable]
+   64 |  bool recieved = false;
+      |       ^~~~~~~~
+../Core/Src/main.c: In function 'int main()':
+../Core/Src/main.c:146:11: warning: unused variable 'spiBuf' [-Wunused-variable]
+  146 |   uint8_t spiBuf[32];
+      |           ^~~~~~
+../Core/Src/main.c:147:11: warning: unused variable 'val' [-Wunused-variable]
+  147 |   uint8_t val;
+      |           ^~~
+../Core/Src/main.c: In function 'uint8_t loraTransmit(uint8_t*, uint8_t)':
+../Core/Src/main.c:88:9: warning: 'void* __builtin_memcpy(void*, const void*, unsigned int)' writing 35 bytes into a region of size 32 overflows the destination [-Wstringop-overflow=]
+   88 |   strcpy((char*)uartBuf, "LoRa Transmit Already In Process\r\n");
+      |   ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-g++ -o "STM32Lora.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\josep\Projects\STM32Lora\STM32Lora\STM32G431KBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32Lora.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: STM32Lora.elf
+ 
+arm-none-eabi-size   STM32Lora.elf 
+arm-none-eabi-objdump -h -S  STM32Lora.elf  > "STM32Lora.list"
+   text	   data	    bss	    dec	    hex	filename
+  25312	    124	   1920	  27356	   6adc	STM32Lora.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32Lora.list
+ 

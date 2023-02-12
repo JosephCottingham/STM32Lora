@@ -191,7 +191,6 @@ int main(void)
 //		LoRa.sleep();
 //		LoRa.setSignalBandwidth(125E3);
 		loraTransmit(loraTransmission, loraTransmissionLen);
-		LoRa.setRxMode(true);
 
 	}
 

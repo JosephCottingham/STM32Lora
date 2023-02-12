@@ -1,4 +1,4 @@
-00:45:02 **** Incremental Build of configuration Debug for project STM32Lora ****
+01:13:05 **** Incremental Build of configuration Debug for project STM32Lora ****
 make -j8 all 
 arm-none-eabi-g++ "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/josep/Projects/STM32Lora/STM32Lora/RA01" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 cc1plus.exe: warning: command-line option '-std=gnu11' is valid for C/ObjC but not for C++
@@ -7,9 +7,6 @@ cc1plus.exe: warning: command-line option '-std=gnu11' is valid for C/ObjC but n
    64 |  bool recieved = false;
       |       ^~~~~~~~
 ../Core/Src/main.c: In function 'int main()':
-../Core/Src/main.c:188:11: warning: unused variable 'loraTransmissionLen' [-Wunused-variable]
-  188 |   uint8_t loraTransmissionLen = sprintf((char*)loraTransmission, "Data:%02X ", (tx_count/15));
-      |           ^~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c:146:11: warning: unused variable 'spiBuf' [-Wunused-variable]
   146 |   uint8_t spiBuf[32];
       |           ^~~~~~
@@ -26,11 +23,11 @@ Finished building target: STM32Lora.elf
 arm-none-eabi-size   STM32Lora.elf 
 arm-none-eabi-objdump -h -S  STM32Lora.elf  > "STM32Lora.list"
    text	   data	    bss	    dec	    hex	filename
-  24808	    124	   1920	  26852	   68e4	STM32Lora.elf
+  25312	    124	   1920	  27356	   6adc	STM32Lora.elf
 Finished building: default.size.stdout
  
 Finished building: STM32Lora.list
  
 
-00:45:02 Build Finished. 0 errors, 5 warnings. (took 592ms)
+01:13:06 Build Finished. 0 errors, 4 warnings. (took 600ms)
 

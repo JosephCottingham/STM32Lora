@@ -183,7 +183,7 @@ int main(void)
 //	HAL_GPIO_WritePin(TOGGLE_GPIO_Port, TOGGLE_Pin, GPIO_PIN_RESET);
 //	HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
-	if (tx_count % 100 == 0) {
+	if (tx_count % 10 == 0) {
 		uint8_t loraTransmission[32];
 		uint8_t loraTransmissionLen = sprintf((char*)loraTransmission, "Data:%02X ", (tx_count/15));
 		HAL_UART_Transmit(&huart2, loraTransmission, loraTransmissionLen, HAL_MAX_DELAY);
@@ -191,7 +191,6 @@ int main(void)
 //		LoRa.sleep();
 //		LoRa.setSignalBandwidth(125E3);
 		loraTransmit(loraTransmission, loraTransmissionLen);
-		LoRa.setRxMode(true);
 
 	}
 
